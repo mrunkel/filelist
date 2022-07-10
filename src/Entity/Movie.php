@@ -17,22 +17,23 @@ class Movie
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private ?string $name = null;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $movieCode;
+    private ?string $movieCode = null;
 
     /**
      * @ORM\OneToMany(targetEntity=File::class, mappedBy="movie")
+     * @var Collection<File>
      */
-    private $files;
+    private Collection $files;
 
     public function __construct()
     {
@@ -88,11 +89,9 @@ class Movie
 
     public function removeFile(File $file): self
     {
-        if ($this->files->removeElement($file)) {
-            // set the owning side to null (unless already changed)
-            if ($file->getMovie() === $this) {
-                $file->setMovie(null);
-            }
+        // set the owning side to null (unless already changed)
+        if ($this->files->removeElement($file) && $file->getMovie() === $this) {
+            $file->setMovie(null);
         }
 
         return $this;

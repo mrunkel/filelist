@@ -3,7 +3,6 @@
 
 namespace App\Service;
 
-
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 class Scanner
@@ -21,5 +20,4 @@ class Scanner
         //     no, insert new record
         return true;
     }
-
 }
