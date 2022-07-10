@@ -2,6 +2,9 @@
 
 name: Rector CI
 
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
 on:
   pull_request: null
 
