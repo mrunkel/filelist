@@ -14,11 +14,9 @@ class ScanCommand extends Command
 {
     protected static $defaultName = 'scan';
     protected static $defaultDescription = 'Scan the given directory(ies) and store all the new files';
-    private Scanner $scanner;
 
-    public function __construct(string $name = null, Scanner $scanner)
+    public function __construct(private Scanner $scanner, string $name = null)
     {
-        $this->scanner = $scanner;
         parent::__construct($name);
     }
 
@@ -32,8 +30,8 @@ class ScanCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $io    = new SymfonyStyle($input, $output);
-        $dirs  = $input->getArgument('dirs');
+        $io = new SymfonyStyle($input, $output);
+        $dirs = $input->getArgument('dirs');
         $test = $input->getOption('test');
 
         if ($test) {

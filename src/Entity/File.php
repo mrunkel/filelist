@@ -15,47 +15,47 @@ class File
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $path;
+    private ?string $path = null;
 
     /**
      * @ORM\Column(type="bigint")
      */
-    private $size;
+    private ?string $size = null;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $filename;
+    private ?string $filename = null;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $extension;
+    private ?string $extension = null;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $directory;
+    private ?string $directory = null;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $vr;
+    private ?bool $vr = null;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $subtitled;
+    private ?bool $subtitled = null;
 
     /**
      * @ORM\ManyToOne(targetEntity=Movie::class, inversedBy="files")
      */
-    private $movie;
+    private ?Movie $movie = null;
 
     public function getId(): ?int
     {
