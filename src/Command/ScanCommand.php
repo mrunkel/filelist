@@ -15,7 +15,7 @@ class ScanCommand extends Command
     protected static $defaultName = 'scan';
     protected static $defaultDescription = 'Scan the given directory(ies) and store all the new files';
 
-    public function __construct(private Scanner $scanner, string $name = null)
+    public function __construct(private readonly Scanner $scanner, string $name = null)
     {
         parent::__construct($name);
     }
